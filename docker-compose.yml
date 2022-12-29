@@ -1,8 +1,20 @@
 version: "3"
 services:
-  php:
+  victim:
     image: php:apache
     ports:
       - 8080:80
     volumes: 
-        - ./src:/var/www/html
+        - ./victim:/var/www/html
+  attacker:
+    image: php:apache
+    ports:
+      - 8081:80
+    volumes: 
+        - ./attacker:/var/www/html
+  innocence:
+    image: php:apache
+    ports:
+      - 8082:80
+    volumes: 
+        - ./innocence:/var/www/html
