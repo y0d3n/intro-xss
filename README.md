@@ -1,4 +1,15 @@
-# Minimum-php-apache
+# intro-xss
 
-phpをサクッと実行するための最小構成。
-`php:apache`は最新のをやってくれるっぽい。`8.0.7`で動作確認済み
+XSSの体験用
+
+## victim
+
+8080
+
+## attacker
+
+8081
+
+## innocence
+
+8082
