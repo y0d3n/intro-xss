@@ -1,19 +1,24 @@
 <?php
 session_start();
 if (!isset($_SESSION["id"])) {
-    $_SESSION["id"] = array('');
+    $_SESSION["id"] = array('id');
 }
 if (!isset($_SESSION["pw"])) {
-    $_SESSION["pw"] = array('');
+    $_SESSION["pw"] = array('pass');
+}
+if (!isset($_SESSION["remarks"])) {
+    $_SESSION["remarks"] = array('remarks');
 }
 
 if (isset($_POST["rm"])) {
     unset($_SESSION["id"][$_POST["idx"]]);
     unset($_SESSION["pw"][$_POST["idx"]]);
+    unset($_SESSION["remarks"][$_POST["idx"]]);
 } else {
     if (isset($_POST["idx"])) {
         $_SESSION["id"][$_POST["idx"]] = $_POST["id"];
         $_SESSION["pw"][$_POST["idx"]] = $_POST["pw"];
+        $_SESSION["remarks"][$_POST["idx"]] = $_POST["remarks"];
     }
 }
 
@@ -51,7 +56,8 @@ if (isset($_POST["rm"])) {
         }
     </script>
     <style>
-        body, input {
+        body,
+        input {
             text-align: center;
         }
 
@@ -61,6 +67,7 @@ if (isset($_POST["rm"])) {
             border: 1px solid #e6edf3;
             padding: 0.4em 0.5em;
             margin: 0 0.2em;
+            overflow-wrap: break-word;
         }
 
         input::placeholder {
@@ -74,6 +81,10 @@ if (isset($_POST["rm"])) {
 
         .id,
         .pw {
+            width: 15em;
+        }
+
+        .remarks {
             width: 20em;
         }
 
@@ -96,24 +107,26 @@ if (isset($_POST["rm"])) {
     <h1><i class="serif">✨✨✨ Super Secure Password Manager ✨✨✨</i></h1>
     <hr>
     <p>このWebアプリケーションは <b>セキュリティが完璧</b> なパスワードマネージャーアプリです。<br>
-        入力した値は本人からしか見れないため、安全にユーザ名とパスワードのペアを保存可能です。</p>
+        IDとパスワードを備考と一緒に保存できます。</p>
 
     <div id="main">
         <?php
-        // secret
-        //for ($i = 0; $i < count($_SESSION["id"]); $i++) {
         foreach ($_SESSION["id"] as $i => $v) {
             echo '<div id="secret[' . $i . ']" class="columns"><code class="id">';
-            echo $_SESSION["id"][$i] == "" ? "id" : $_SESSION["id"][$i];
-            echo '</code><code class="pw">';
-            echo $_SESSION["pw"][$i] == "" ? "passwd" : $_SESSION["pw"][$i];
-            echo '</code> <button onclick="toggle(' . $i .  ')">Edit</button><form method="POST" style="display: inline;"><button type="button" onclick="submit();">Del</button><input type="hidden" name="rm"><input type="hidden" name="idx" value="' . $i . '"></form></div>';
+            echo $_SESSION["id"][$i];
+            echo '</code> <code class="pw">';
+            echo $_SESSION["pw"][$i];
+            echo '</code> <code class="remarks">';
+            echo $_SESSION["remarks"][$i];
+            echo '</code> <button onclick="toggle(' . $i .  ')">Edit</button> <form method="POST" style="display: inline;"><button type="button" onclick="submit();">Del</button><input type="hidden" name="rm"><input type="hidden" name="idx" value="' . $i . '"></form></div>';
 
             echo '<div id="edit[' . $i . ']" class="columns" style="display: none;"><form method="POST" style="display: inline;"><input type="text" class="id" name="id" value="';
-            echo $_SESSION["id"][$i] == "" ? "id" : $_SESSION["id"][$i];
+            echo  $_SESSION["id"][$i];
             echo '"> <input type="text" class="pw" name="pw" value="';
-            echo $_SESSION["pw"][$i] == "" ? "pw" : $_SESSION["pw"][$i];
-            echo '"> <input type="hidden" name="idx" value="' . $i . '"> <input type="submit" value="Enter"></form> <button onclick="toggle(' . $i . ')">Cancel</button>';
+            echo  $_SESSION["pw"][$i];
+            echo '"> <input type="text" class="remarks" name="remarks" value="';
+            echo  $_SESSION["remarks"][$i];
+            echo '" autocomplete="off"> <input type="hidden" name="idx" value="' . $i . '"> <input type="submit" value="Enter"></form> <button onclick="toggle(' . $i . ')">Cancel</button>';
             echo '<div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div></div>';
         }
 
@@ -123,6 +136,7 @@ if (isset($_POST["rm"])) {
                 <input type="hidden" name="idx" value="<? echo array_key_last($_SESSION["id"]) + 1 ?>">
                 <input type="text" class="id" name="id" placeholder="id">
                 <input type="text" class="pw" name="pw" placeholder="pw">
+                <input type="text" class="remarks" name="remarks" placeholder="remarks">
                 <input type="submit" value="Enter">
                 <button type="button" onclick="toggleadd()">Cancel</button>
                 <div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div>
