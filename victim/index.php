@@ -106,7 +106,7 @@ if (isset($_GET["rm"])) {
 <body>
     <h1><i class="serif">✨✨✨ Super Secure Password Manager ✨✨✨</i></h1>
     <hr>
-    <p>このWebアプリケーションは <b>セキュリティが完璧</b> なパスワードマネージャーアプリです。<br>
+    <p>このページは <b>セキュリティが完璧</b> なパスワードマネージャーです。<br>
         IDとパスワードを備考と一緒に保存できます。</p>
 
     <div id="main">
@@ -122,9 +122,9 @@ if (isset($_GET["rm"])) {
 
             echo '<div id="edit[' . $i . ']" class="columns" style="display: none;"><form style="display: inline;"><input type="text" class="id" name="id" value="';
             echo  $_SESSION["id"][$i];
-            echo '"> <input type="text" class="pw" name="pw" value="';
+            echo '" autocomplete="off"> <input type="text" class="pw" name="pw" value="';
             echo  $_SESSION["pw"][$i];
-            echo '"> <input type="text" class="remarks" name="remarks" value="';
+            echo '" autocomplete="off"> <input type="text" class="remarks" name="remarks" value="';
             echo  $_SESSION["remarks"][$i];
             echo '" autocomplete="off"> <input type="hidden" name="idx" value="' . $i . '"> <input type="submit" value="Enter"></form> <button onclick="toggle(' . $i . ')">Cancel</button>';
             echo '<div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div></div>';
@@ -134,8 +134,8 @@ if (isset($_GET["rm"])) {
         <div id="addform" class="columns" style="display: none;">
             <form style="display: inline;">
                 <input type="hidden" name="idx" value="<? echo array_key_last($_SESSION["id"]) + 1 ?>">
-                <input type="text" class="id" name="id" placeholder="id">
-                <input type="text" class="pw" name="pw" placeholder="pw">
+                <input type="text" class="id" name="id" placeholder="id" autocomplete="off">
+                <input type="text" class="pw" name="pw" placeholder="pw" autocomplete="off">
                 <input type="text" class="remarks" name="remarks" placeholder="remarks" autocomplete="off">
                 <input type="submit" value="Enter">
                 <button type="button" onclick="toggleadd()">Cancel</button>
