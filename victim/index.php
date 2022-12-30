@@ -136,7 +136,7 @@ if (isset($_GET["rm"])) {
                 <input type="hidden" name="idx" value="<? echo array_key_last($_SESSION["id"]) + 1 ?>">
                 <input type="text" class="id" name="id" placeholder="id">
                 <input type="text" class="pw" name="pw" placeholder="pw">
-                <input type="text" class="remarks" name="remarks" placeholder="remarks">
+                <input type="text" class="remarks" name="remarks" placeholder="remarks" autocomplete="off">
                 <input type="submit" value="Enter">
                 <button type="button" onclick="toggleadd()">Cancel</button>
                 <div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div>
