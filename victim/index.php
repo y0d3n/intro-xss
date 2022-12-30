@@ -10,15 +10,15 @@ if (!isset($_SESSION["remarks"])) {
     $_SESSION["remarks"] = array('remarks');
 }
 
-if (isset($_POST["rm"])) {
-    unset($_SESSION["id"][$_POST["idx"]]);
-    unset($_SESSION["pw"][$_POST["idx"]]);
-    unset($_SESSION["remarks"][$_POST["idx"]]);
+if (isset($_GET["rm"])) {
+    unset($_SESSION["id"][$_GET["idx"]]);
+    unset($_SESSION["pw"][$_GET["idx"]]);
+    unset($_SESSION["remarks"][$_GET["idx"]]);
 } else {
-    if (isset($_POST["idx"])) {
-        $_SESSION["id"][$_POST["idx"]] = $_POST["id"];
-        $_SESSION["pw"][$_POST["idx"]] = $_POST["pw"];
-        $_SESSION["remarks"][$_POST["idx"]] = $_POST["remarks"];
+    if (isset($_GET["idx"])) {
+        $_SESSION["id"][$_GET["idx"]] = $_GET["id"];
+        $_SESSION["pw"][$_GET["idx"]] = $_GET["pw"];
+        $_SESSION["remarks"][$_GET["idx"]] = $_GET["remarks"];
     }
 }
 
@@ -118,9 +118,9 @@ if (isset($_POST["rm"])) {
             echo $_SESSION["pw"][$i];
             echo '</code> <code class="remarks">';
             echo $_SESSION["remarks"][$i];
-            echo '</code> <button onclick="toggle(' . $i .  ')">Edit</button> <form method="POST" style="display: inline;"><button type="button" onclick="submit();">Del</button><input type="hidden" name="rm"><input type="hidden" name="idx" value="' . $i . '"></form></div>';
+            echo '</code> <button onclick="toggle(' . $i .  ')">Edit</button> <form style="display: inline;"><button type="button" onclick="submit();">Del</button><input type="hidden" name="rm"><input type="hidden" name="idx" value="' . $i . '"></form></div>';
 
-            echo '<div id="edit[' . $i . ']" class="columns" style="display: none;"><form method="POST" style="display: inline;"><input type="text" class="id" name="id" value="';
+            echo '<div id="edit[' . $i . ']" class="columns" style="display: none;"><form style="display: inline;"><input type="text" class="id" name="id" value="';
             echo  $_SESSION["id"][$i];
             echo '"> <input type="text" class="pw" name="pw" value="';
             echo  $_SESSION["pw"][$i];
@@ -132,7 +132,7 @@ if (isset($_POST["rm"])) {
 
         ?>
         <div id="addform" class="columns" style="display: none;">
-            <form method="POST" style="display: inline;">
+            <form style="display: inline;">
                 <input type="hidden" name="idx" value="<? echo array_key_last($_SESSION["id"]) + 1 ?>">
                 <input type="text" class="id" name="id" placeholder="id">
                 <input type="text" class="pw" name="pw" placeholder="pw">
