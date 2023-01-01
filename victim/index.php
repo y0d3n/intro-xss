@@ -112,25 +112,32 @@ if (isset($_GET["rm"])) {
     <div id="main">
         <?php
         foreach ($_SESSION["id"] as $i => $v) {
-            echo '<div id="secret[' . $i . ']" class="columns"><code class="id">';
-            echo $_SESSION["id"][$i];
-            echo '</code> <code class="pw">';
-            echo $_SESSION["pw"][$i];
-            echo '</code> <code class="remarks">';
-            echo $_SESSION["remarks"][$i];
-            echo '</code> <button onclick="toggle(' . $i .  ')">Edit</button> <form style="display: inline;"><button type="button" onclick="submit();">Del</button><input type="hidden" name="rm"><input type="hidden" name="idx" value="' . $i . '"></form></div>';
-
-            echo '<div id="edit[' . $i . ']" class="columns" style="display: none;"><form style="display: inline;"><input type="text" class="id" name="id" value="';
-            echo  $_SESSION["id"][$i];
-            echo '" autocomplete="off"> <input type="text" class="pw" name="pw" value="';
-            echo  $_SESSION["pw"][$i];
-            echo '" autocomplete="off"> <input type="text" class="remarks" name="remarks" value="';
-            echo  $_SESSION["remarks"][$i];
-            echo '" autocomplete="off"> <input type="hidden" name="idx" value="' . $i . '"> <input type="submit" value="Enter"></form> <button onclick="toggle(' . $i . ')">Cancel</button>';
-            echo '<div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div></div>';
-        }
-
         ?>
+            <div id="secret[<? echo $i; ?>]" class="columns">
+                <code class="id"><? echo $_SESSION["id"][$i]; ?></code>
+                <code class="pw"><? echo $_SESSION["pw"][$i]; ?></code>
+                <code class="remarks"><? echo $_SESSION["remarks"][$i]; ?></code>
+                <button onclick="toggle('<? echo $i ?>')">Edit</button>
+                <form style="display: inline;">
+                    <button type="button" onclick="submit();">Del</button>
+                    <input type="hidden" name="rm">
+                    <input type="hidden" name="idx" value="<? echo $i ?>">
+                </form>
+            </div>
+
+            <div id="edit[<? echo $i ?>]" class="columns" style="display: none;">
+                <form style="display: inline;">
+                    <input type="text" class="id" name="id" value="<? echo $_SESSION["id"][$i]; ?>" autocomplete="off">
+                    <input type="text" class="pw" name="pw" value="<? echo $_SESSION["pw"][$i]; ?>" autocomplete="off">
+                    <input type="text" class="remarks" name="remarks" value="<? echo $_SESSION["remarks"][$i]; ?>" autocomplete="off">
+                    <input type="hidden" name="idx" value="<? echo $i ?>">
+                    <input type="submit" value="Enter">
+                </form>
+                <button onclick="toggle('<? echo $i ?>')">Cancel</button>
+                <div class="caution">※ ここに入力した情報は余裕で漏洩するため、実際のパスワード等の機密情報は入力しないでください。</div>
+            </div>
+        <? } ?>
+
         <div id="addform" class="columns" style="display: none;">
             <form style="display: inline;">
                 <input type="hidden" name="idx" value="<? echo array_key_last($_SESSION["id"]) + 1 ?>">
