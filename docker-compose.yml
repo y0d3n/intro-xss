@@ -18,3 +18,9 @@ services:
       - 8082:80
     volumes: 
         - ./innocence:/var/www/html
+  practice1:
+    image: php:apache
+    ports:
+      - 18080:80
+    volumes: 
+        - ./practice1:/var/www/html
