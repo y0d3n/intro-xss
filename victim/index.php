@@ -32,8 +32,6 @@ if (isset($_GET["rm"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victim</title>
     <script>
-        history.pushState('', '', '/');
-
         function toggleadd() {
             if (document.getElementById("addform").style.display == "none") {
                 document.getElementById("addform").setAttribute("style", "display: block");
