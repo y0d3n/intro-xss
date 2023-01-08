@@ -1,4 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin: http://localhost:8083');
+header('Access-Control-Allow-Credentials: true');
+
 session_start();
 if (!isset($_SESSION["id"])) {
     $_SESSION["id"] = array('id');
@@ -111,7 +114,7 @@ if (isset($_GET["rm"])) {
         <?php
         foreach ($_SESSION["id"] as $i => $v) {
         ?>
-            <div id="secret[<? echo $i; ?>]" class="columns">
+            <div id="secret[<? echo $i; ?>]" class="secretcol columns">
                 <code class="id"><? echo $_SESSION["id"][$i]; ?></code>
                 <code class="pw"><? echo $_SESSION["pw"][$i]; ?></code>
                 <code class="remarks"><? echo $_SESSION["remarks"][$i]; ?></code>
