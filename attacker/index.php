@@ -60,8 +60,8 @@
 
     <div id="links">
         <a class="link" href='?script=alert%281%29'>alert(1)</a><br>
-        <a class="link" href='?script=fetch%28%22http%3A%2F%2Flocalhost%3A8081%22%29%0D%0A++++.then%28%28r%29%3D%3Er.text%28%29%29%0D%0A++++.then%28%28t%29%3D%3Ealert%28t%29%29'>演習１ (同一オリジンへのfetch)</a><br>
-        <a class="link" href='?script=fetch%28%22http%3A%2F%2Flocalhost%3A8080%22%29%0D%0A++++.then%28%28r%29%3D%3Er.text%28%29%29%0D%0A++++.then%28%28t%29%3D%3Ealert%28t%29%29'>演習２ (異なるオリジンへのfetch)</a><br>
+        <a class="link" href='?script=fetch%28%22http%3A%2F%2Flocalhost%3A8082%22%29%0D%0A++++.then%28%28r%29%3D%3Er.text%28%29%29%0D%0A++++.then%28%28t%29%3D%3Econsole.log%28t%29%29'>演習１ (同一オリジンへのfetch)</a><br>
+        <a class="link" href='?script=fetch%28%22http%3A%2F%2Flocalhost%3A8081%22%29%0D%0A++++.then%28%28r%29%3D%3Er.text%28%29%29%0D%0A++++.then%28%28t%29%3D%3Econsole.log%28t%29%29'>演習２ (異なるオリジンへのfetch)</a><br>
     </div>
 </body>
 
