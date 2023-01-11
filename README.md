@@ -15,7 +15,7 @@ sudo docker compose up
 
 <http://localhost:8080>
 
-## victim
+## secret
 
 <http://localhost:8081>
 

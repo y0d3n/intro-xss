@@ -6,12 +6,12 @@ services:
       - 8080:80
     volumes: 
         - ./practice:/var/www/html
-  victim:
+  secret:
     image: php:apache
     ports:
       - 8081:80
     volumes: 
-        - ./victim:/var/www/html
+        - ./secret:/var/www/html
   attacker:
     image: php:apache
     ports:
