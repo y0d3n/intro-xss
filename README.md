@@ -8,7 +8,7 @@ XSSの体験用
 git clone git@github.com:y0d3n/intro-xss.git
 cd intro-xss/
 sudo service docker start
-sudo docker-compose up
+sudo docker compose up
 ```
 
 ## practice
