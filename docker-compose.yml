@@ -1,0 +1,23 @@
+services:
+  practice:
+    build: practice
+    ports:
+      - "8081:3000"
+    environment:
+      - FLAG=flag{hogefuga}
+  variation:
+    build: variation
+    ports:
+      - "8082:3000"
+  cors:
+    build: cors
+    ports:
+      - "8083:3000"
+  csp-self:
+    build: csp-self
+    ports:
+      - "8084:3000"
+  attacker:
+    build: attacker
+    ports:
+      - "9000:3000"
