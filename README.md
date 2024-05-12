@@ -15,14 +15,18 @@ sudo docker compose up
 
 <http://localhost:8081>
 
-## secret
+## vatiation
 
 <http://localhost:8082>
 
-## cors
+## csp-inline
 
 <http://localhost:8083>
 
 ## csp-self
 
 <http://localhost:8084>
+
+## cors
+
+<http://localhost:8085>

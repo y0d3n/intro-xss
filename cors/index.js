@@ -5,9 +5,10 @@ const app = express();
 
 app.use(cors({
   origin: "http://localhost:8081",
+  credentials: true,
 }));
 
-app.get("/secret", (req, res) => {
+app.get("/", (req, res) => {
   return res.send(process.env.FLAG);
 });
 

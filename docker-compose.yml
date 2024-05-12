@@ -9,14 +9,20 @@ services:
     build: variation
     ports:
       - "8082:3000"
-  cors:
-    build: cors
+  csp-inline:
+    build: csp-inline
     ports:
       - "8083:3000"
   csp-self:
     build: csp-self
     ports:
       - "8084:3000"
+  cors:
+    build: cors
+    ports:
+      - "8085:3000"
+    environment:
+      - FLAG=flag{hogefuga}
   attacker:
     build: attacker
     ports:
