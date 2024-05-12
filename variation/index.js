@@ -38,10 +38,4 @@ app.get("/length", (req, res) => {
   return res.render("attr.ejs", { attr });
 });
 
-app.get("/delete", (req, res) => {
-  let name = req.query.name ?? "";
-  name = name.replace(/<[^<>]*>/g, '')
-  return res.render("greeting.ejs", { name });
-});
-
 app.listen(3000);
